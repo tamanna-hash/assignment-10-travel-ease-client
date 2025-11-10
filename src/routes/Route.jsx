@@ -9,49 +9,68 @@ import MyBookings from "../pages/MyBookings";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import UpdateVehicle from "../pages/UpdateVehicle";
+import PrivateRoute from "../provider/PrivateRoute";
+import VehicleDetails from "../pages/VehicleDetails";
 
 export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <MainLayout/>,
-    hydrateFallbackElement:<Loading></Loading>,
-    children:[
-        {
-            index:true,
-            element:<Home></Home>
-        },
-        {
-            path:'/allVehicles',
-            element:<AllVehicles/>
-        },
-        {
-            path:'/addVehicle',
-            element:<AddVehicle/>
-        },
-        {
-            path:'/myVehicles',
-            element:<MyVehicles/>
-        },
-        {
-            path:'/myBookings',
-            element:<MyBookings/>
-        },
-    ]
-  },
-   {
+    {
+        path: "/",
+        element: <MainLayout />,
+        hydrateFallbackElement: <Loading></Loading>,
+        children: [
+            {
+                index: true,
+                element: <Home></Home>
+            },
+            {
+                path: '/allVehicles',
+                element: <AllVehicles />
+            },
+            {
+                path:'/vehicle-details/:id',
+                element:<VehicleDetails/>
+            },
+            {
+                path: '/addVehicle',
+                element: <PrivateRoute>
+                    <AddVehicle />
+                </PrivateRoute>
+            },
+            {
+                path: '/update-vehicle/:id',
+                element: <PrivateRoute>
+                    <UpdateVehicle />
+                </PrivateRoute>
+            },
+            {
+                path: '/myVehicles',
+                element: <PrivateRoute>
+                    <MyVehicles />
+                </PrivateRoute>
+            },
+            {
+                path: '/myBookings',
+                element: <PrivateRoute>
+                    <MyBookings />
+                </PrivateRoute>
+            },
+        ]
+    },
+    {
         path: '/auth',
         element: <AuthLayout></AuthLayout>,
         hydrateFallbackElement: <Loading />,
         children: [
             {
                 path: '/auth/login',
-                element: <Login/>
+                element: <Login />
             },
             {
                 path: '/auth/register',
-                element: <Register/>
+                element: <Register />
             },
-         
+
         ]
     },
 ]);

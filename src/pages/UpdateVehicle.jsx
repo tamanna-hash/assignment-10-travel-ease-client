@@ -1,31 +1,6 @@
-import React, { use } from 'react';
-import { AuthContext } from '../provider/AuthContext';
-import useAxios from '../hooks/useAxios';
+import React from 'react';
 
-const AddVehicle = () => {
-    const { user } = use(AuthContext)
-    const axiosInstance = useAxios()
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
-        const formData = {
-            vehicleName: e.target.vehicleName.value,
-            owner: e.target.owner.value,
-            category: e.target.category.value,
-            pricePerDay:parseInt( e.target.price.value),
-            location: e.target.location.value,
-            availability: e.target.availability.value,
-            description: e.target.description.value,
-            coverImage: e.target.coverImage.value,
-            userEmail: user.email,
-            createdAt: new Date(),
-        }
-        axiosInstance.post('/all-vehicles',formData)
-        .then(data=>{
-            console.log(data.data);
-        })
-        console.log(formData);
-    }
+const UpdateVehicle = () => {
     return (
         <>
             <div className="bg-[#f4f7fd] py-4 flex justify-center min-h-screen items-center">
@@ -33,7 +8,7 @@ const AddVehicle = () => {
                     <h2 className="font-semibold md:text-2xl text-center">
                         Add vehicle
                     </h2>
-                    <form onSubmit={handleSubmit} className="card-body">
+                    <form className="card-body">
                         <fieldset className="fieldset">
                             {/* vehicle Name  */}
                             <label className="label">Vehicle Name</label>
@@ -45,46 +20,33 @@ const AddVehicle = () => {
                                 required
                             />
                             {/*owner Name  */}
-                            <label className="label">Owner</label>
+                            <label className="label">Owner Name</label>
                             <input
-                                name="owner"
+                                name="ownerName"
                                 type="text"
                                 className="input"
-                                placeholder="Owner"
+                                placeholder="Owner Name"
                                 required
                             />
 
-                            <div className='flex'>
-                                {/* Category  */}
-                                <div>
-                                    <label className="label">Category</label>
-                                    <select
-                                        defaultValue={""}
-                                        name="category"
-                                        required
-                                        className="select w-full focus:border-0 focus:outline-gray-200"
-                                    >
-                                        <option value="" disabled>
-                                            Select category
-                                        </option>
-                                        <option value="Sedan">Sedan</option>
-                                        <option value="SUV">SUV</option>
-                                        <option value="Electric">Electric</option>
-                                        <option value="Van">Van</option>
-                                    </select>
-                                </div>
-                                {/* Price per day*/}
-                                <div>
-                                    <label className="label">Price per day</label>
-                                    <input
-                                        name="price"
-                                        type="text"
-                                        className="input"
-                                        placeholder="price"
-                                        required
-                                    />
-                                </div>
-                            </div>
+                            {/* Category  */}
+                            <label className="label">Category</label>
+                            <input
+                                name="category"
+                                type="text"
+                                className="input"
+                                placeholder="ategory"
+                                required
+                            />
+                            {/* Price per day*/}
+                            <label className="label">Price per day</label>
+                            <input
+                                name="price"
+                                type="text"
+                                className="input"
+                                placeholder="price"
+                                required
+                            />
                             {/* Location  */}
                             <label className="label">Location</label>
                             <input
@@ -118,7 +80,7 @@ const AddVehicle = () => {
                             {/* Photo URl  */}
                             <label className="label">Cover Image </label>
                             <input
-                                name="coverImage"
+                                name="photo"
                                 type="text"
                                 className="input"
                                 placeholder="Photo URl"
@@ -131,12 +93,9 @@ const AddVehicle = () => {
                                 type="email"
                                 className="input"
                                 placeholder="Email"
-                                defaultValue={user.email}
                                 required
                             />
-                            <button type="submit" className="btn text-xs md:text-base bg-blue-100 mt-4 hover:scale-102">
-                                Add Vehicle
-                            </button>
+
                         </fieldset>
                     </form>
                 </div>
@@ -145,4 +104,4 @@ const AddVehicle = () => {
     );
 };
 
-export default AddVehicle;
+export default UpdateVehicle;
