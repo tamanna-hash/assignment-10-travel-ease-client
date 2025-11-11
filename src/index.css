@@ -1,2 +1,10 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+ul a {
+    @apply text-blue-900
+}
+
+ul a.active {
+    @apply underline underline-offset-4
+}

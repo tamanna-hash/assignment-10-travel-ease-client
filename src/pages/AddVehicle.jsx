@@ -5,7 +5,7 @@ import useAxios from '../hooks/useAxios';
 const AddVehicle = () => {
     const { user } = use(AuthContext)
     const axiosInstance = useAxios()
-    const handleSubmit = (e) => {
+    const handleAddVehicle = (e) => {
         e.preventDefault()
 
         const formData = {
@@ -24,7 +24,6 @@ const AddVehicle = () => {
         .then(data=>{
             console.log(data.data);
         })
-        console.log(formData);
     }
     return (
         <>
@@ -33,7 +32,7 @@ const AddVehicle = () => {
                     <h2 className="font-semibold md:text-2xl text-center">
                         Add vehicle
                     </h2>
-                    <form onSubmit={handleSubmit} className="card-body">
+                    <form onSubmit={handleAddVehicle} className="card-body">
                         <fieldset className="fieldset">
                             {/* vehicle Name  */}
                             <label className="label">Vehicle Name</label>

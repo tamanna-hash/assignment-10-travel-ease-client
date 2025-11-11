@@ -3,8 +3,8 @@ import { LoaderIcon } from 'react-hot-toast';
 
 const Loading = () => {
     return (
-        <div>
-            loading---------<LoaderIcon></LoaderIcon>
+        <div className="flex items-center justify-center h-screen">
+            <span className="loading loading-spinner loading-lg"></span>
         </div>
     );
 };

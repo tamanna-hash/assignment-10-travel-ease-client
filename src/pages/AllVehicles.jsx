@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import VehicleCard from '../components/VehicleCard';
 import useAxios from '../hooks/useAxios';
@@ -11,7 +10,7 @@ const AllVehicles = () => {
             .then(data => {
                 SetVehicles(data.data)
             })
-    }, [])
+    }, [axiosInstance])
     return (
         <>
             <div className=' max-w-[1200px] mx-auto'>
