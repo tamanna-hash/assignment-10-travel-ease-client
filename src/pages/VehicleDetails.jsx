@@ -1,8 +1,9 @@
 import React, { use, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 import useAxios from '../hooks/useAxios';
 import { AuthContext } from '../provider/AuthContext';
 import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 const VehicleDetails = () => {
     const { id } = useParams();
@@ -10,11 +11,12 @@ const VehicleDetails = () => {
     const axiosInstance = useAxios()
     const [vehicle, setVehicle] = useState({})
     const [loading, setLoading] = useState(true)
+    const navigate = useNavigate()
     useEffect(() => {
         if (!user || !user.accessToken) return;
         axiosInstance.get(`/all-vehicles/${id}`, {
             headers: {
-                authorization:  `Bearer ${user.accessToken}`,
+                authorization: `Bearer ${user.accessToken}`,
             }
         })
             .then(res => {
@@ -30,24 +32,53 @@ const VehicleDetails = () => {
             </div>
         );
     }
-    const handleRequestRide=()=>{
+    const handleRequestRide = () => {
         const requestVehicle = {
-            vehicleName:vehicle.vehicleName,
-            owner:vehicle.owner,
-            category:vehicle.category,
-            pricePerDay:vehicle.pricePerDay,
-            location:vehicle.location,
-            availability:vehicle.availability,
-            description:vehicle.description,
-            coverImage:vehicle.coverImage,
-            userEmail:vehicle.userEmail,
+            vehicleName: vehicle.vehicleName,
+            owner: vehicle.owner,
+            category: vehicle.category,
+            pricePerDay: vehicle.pricePerDay,
+            location: vehicle.location,
+            availability: vehicle.availability,
+            description: vehicle.description,
+            coverImage: vehicle.coverImage,
+            userEmail: vehicle.userEmail,
             createdAt: new Date(),
-            bookingBy:user.email
+            bookingBy: user.email
         }
-        axiosInstance.post('/my-bookings',requestVehicle)
-        .then(res=>{
-            toast.success('successfully booked')
-        })
+        axiosInstance.post('/my-bookings', requestVehicle)
+            .then(res => {
+                toast.success('successfully booked')
+            })
+    }
+    const handleDelete = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosInstance.delete(`/all-vehicles/${vehicle._id}`, {
+                    headers: {
+                        authorization: `Bearer ${user.accessToken}`,
+                    }
+                })
+                    .then(data => {
+                        navigate('/allVehicles')
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your vehicle has been deleted.",
+                            icon: "success"
+                        });
+
+                    })
+            }
+        });
+
     }
     return (
         <div className="max-w-5xl mx-auto p-4 md:p-6 lg:p-8">
@@ -94,7 +125,7 @@ const VehicleDetails = () => {
                                 Request Ride
                             </button>
                             <button
-                                // onClick={handleDlete}
+                                onClick={handleDelete}
                                 className="btn btn-outline rounded-full border-gray-300 hover:border-pink-500 hover:text-pink-600"
                             >
                                 Delete

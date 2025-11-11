@@ -1,11 +1,22 @@
-import React, { use } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../provider/AuthContext';
 import logo from '../assets/logo.jpg'
 import toast from 'react-hot-toast';
 import { PuffLoader } from 'react-spinners';
 const Navbar = () => {
-    const { user,  signoutUserFunc, loading } = use(AuthContext);
+    const { user, signoutUserFunc, loading } = use(AuthContext);
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || "light")
+    useEffect(() => {
+        const html = document.querySelector('html')
+        html.setAttribute("data-theme", theme)
+        localStorage.setItem("theme", theme)
+    }, [theme])
+
+
+    const handleTheme = (checked) => {
+        setTheme(checked ? "dark" : "light")
+    }
     const handleLogOut = () => {
         signoutUserFunc()
             .then(() => {
@@ -46,8 +57,15 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
+                <div>
+                    <input
+                        onChange={(e) => handleTheme(e.target.checked)}
+                        type="checkbox"
+                        defaultChecked={localStorage.getItem('theme') === "dark"}
+                        className="toggle" />
+                </div>
                 <div className="navbar-end">
-                    {loading?<PuffLoader />:user ? (
+                    {loading ? <PuffLoader /> : user ? (
                         <div className="login-btn flex gap-2 md:gap-5">
                             <div className="tooltip tooltip-bottom ">
                                 <div className="tooltip-content bg-blue-100">

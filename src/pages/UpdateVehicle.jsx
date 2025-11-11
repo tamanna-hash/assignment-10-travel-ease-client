@@ -38,7 +38,7 @@ const UpdateVehicle = () => {
             coverImage: e.target.coverImage.value,
             
         }
-        axiosInstance.put(`/update-vehicle/${vehicle._id}`,formData)
+        axiosInstance.put(`/all-vehicles/${vehicle._id}`,formData)
         .then(data=>{
             toast.success('successfully updated')
         })

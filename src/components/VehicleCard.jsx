@@ -7,7 +7,7 @@ const VehicleCard = ({ vehicle }) => {
             <figure className="h-48 overflow-hidden">
                 <img
                     src={coverImage}
-                    alt={name}
+                    alt={'vehicleImage'}
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                 />
             </figure>
