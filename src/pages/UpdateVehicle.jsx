@@ -1,5 +1,5 @@
 import React, { use, useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { AuthContext } from '../provider/AuthContext';
 import useAxios from '../hooks/useAxios';
 import Loading from './Loading';
@@ -11,6 +11,7 @@ const UpdateVehicle = () => {
     const axiosInstance = useAxios()
     const [vehicle, setVehicle] = useState({})
     const [loading, setLoading] = useState(true)
+    const navigate = useNavigate()
     useEffect(() => {
         if (!user || !user.accessToken) return;
         axiosInstance.get(`/all-vehicles/${id}`, {
@@ -41,6 +42,7 @@ const UpdateVehicle = () => {
         axiosInstance.put(`/all-vehicles/${vehicle._id}`,formData)
         .then(data=>{
             toast.success('successfully updated')
+            navigate('/myVehicles')
         })
     }
 

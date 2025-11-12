@@ -9,11 +9,12 @@ import Loading from './Loading';
 const VehicleDetails = () => {
     const { id } = useParams();
     const { user } = use(AuthContext)
+    const navigate = useNavigate()
     const axiosInstance = useAxios()
     const [vehicle, setVehicle] = useState({})
     const [loading, setLoading] = useState(true)
-    const [refetch, setRefetch] = useState(false)
-    const navigate = useNavigate()
+    // const [refetch, setRefetch] = useState(false)
+    // const navigate = useNavigate()
     useEffect(() => {
         if (!user || !user.accessToken) return;
         axiosInstance.get(`/all-vehicles/${id}`, {
@@ -37,7 +38,7 @@ const VehicleDetails = () => {
         //     })
         //     .catch((err) => console.error(err))
         //     .finally(() => setLoading(false))
-    }, [id, user, axiosInstance, refetch]);
+    }, [id, user, axiosInstance]);
     if (loading || !user) {
         return (
             <Loading></Loading>
@@ -66,39 +67,42 @@ const VehicleDetails = () => {
             )
             .catch(err => console.log(err))
     }
-    const handleDelete = () => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                axiosInstance.delete(`/all-vehicles/${vehicle._id}`, {
-                    headers: {
-                        authorization: `Bearer ${user.accessToken}`,
-                    }
-                })
-                    .then(data => {
-                        navigate('/allVehicles')
-                        setRefetch(!refetch)
-                        Swal.fire({
-                            title: "Deleted!",
-                            text: "Your vehicle has been deleted.",
-                            icon: "success"
-                        });
-
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
-            }
-        });
-
+    const handleBack = () => {
+        navigate('/allVehicles')
     }
+    // const handleDelete = () => {
+    //     Swal.fire({
+    //         title: "Are you sure?",
+    //         text: "You won't be able to revert this!",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Yes, delete it!"
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             axiosInstance.delete(`/all-vehicles/${vehicle._id}`, {
+    //                 headers: {
+    //                     authorization: `Bearer ${user.accessToken}`,
+    //                 }
+    //             })
+    //                 .then(data => {
+    //                     navigate('/allVehicles')
+    //                     setRefetch(!refetch)
+    //                     Swal.fire({
+    //                         title: "Deleted!",
+    //                         text: "Your vehicle has been deleted.",
+    //                         icon: "success"
+    //                     });
+
+    //                 })
+    //                 .catch(err => {
+    //                     console.log(err);
+    //                 })
+    //         }
+    //     });
+
+    // }
     return (
         <div className="max-w-5xl mx-auto p-4 md:p-6 lg:p-8">
             <div className="card bg-base-100 shadow-xl border border-gray-200 rounded-2xl overflow-hidden">
@@ -127,6 +131,9 @@ const VehicleDetails = () => {
                             <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
                                 Booked: {vehicle.booked}
                             </div>
+                            <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
+                                Price: {vehicle.pricePerDay}
+                            </div>
                         </div>
 
                         <p className="text-gray-600 leading-relaxed text-base md:text-lg">
@@ -134,24 +141,25 @@ const VehicleDetails = () => {
                         </p>
 
                         <div className="flex gap-3 mt-6">
-                            <Link
+                            {/* <Link
                                 to={`/update-vehicle/${vehicle._id}`}
                                 className="btn btn-primary rounded-full bg-linear-to-r from-pink-500 to-red-600 text-white border-0 hover:from-pink-600 hover:to-red-700"
                             >
                                 Update Model
-                            </Link>
+                            </Link> */}
                             <button
                                 onClick={handleRequestRide}
                                 className="btn btn-secondary rounded-full"
                             >
                                 Request Ride
                             </button>
-                            <button
-                                onClick={handleDelete}
-                                className="btn btn-outline rounded-full border-gray-300 hover:border-pink-500 hover:text-pink-600"
-                            >
-                                Delete
-                            </button>
+                            <div className="flex gap-3 mt-6">
+                                <button onClick={handleBack}
+                                    className="btn btn-outline rounded-full border-gray-300 hover:border-pink-500 hover:text-pink-600"
+                                >
+                                    Back
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,7 @@ const VehicleDetails = () => {
     const axiosInstance = useAxios()
     const [vehicle, setVehicle] = useState({})
     const [loading, setLoading] = useState(true)
-    const [refetch, setRefetch] = useState(false)
+    // const [refetch, setRefetch] = useState(false)
     const navigate = useNavigate()
     useEffect(() => {
         ////for booking-details
@@ -27,68 +27,12 @@ const VehicleDetails = () => {
             })
             .catch((err) => console.error(err))
             .finally(() => setLoading(false))
-    }, [id, user, axiosInstance, refetch]);
+    }, [id, user, axiosInstance]);
     if (loading || !user) {
         return (
             <Loading></Loading>
         );
     }
-    // const handleRequestRide = () => {
-    //     const requestVehicle = {
-    //         vehicleName: vehicle.vehicleName,
-    //         owner: vehicle.owner,
-    //         category: vehicle.category,
-    //         pricePerDay: vehicle.pricePerDay,
-    //         location: vehicle.location,
-    //         availability: vehicle.availability,
-    //         description: vehicle.description,
-    //         coverImage: vehicle.coverImage,
-    //         userEmail: vehicle.userEmail,
-    //         createdAt: new Date(),
-    //         bookingBy: user.email,
-    //         rate: vehicle.rate,
-    //         booked: vehicle.booked,
-    //         // _id: vehicle._id,
-    //     }
-    //     axiosInstance.post(`/my-bookings/${vehicle._id}`, requestVehicle)
-    //         .then(
-    //             toast.success('successfully booked')
-    //         )
-    //         .catch(err => console.log(err))
-    // }
-    // const handleDelete = () => {
-    //     Swal.fire({
-    //         title: "Are you sure?",
-    //         text: "You won't be able to revert this!",
-    //         icon: "warning",
-    //         showCancelButton: true,
-    //         confirmButtonColor: "#3085d6",
-    //         cancelButtonColor: "#d33",
-    //         confirmButtonText: "Yes, delete it!"
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             axiosInstance.delete(`/all-vehicles/${vehicle._id}`, {
-    //                 headers: {
-    //                     authorization: `Bearer ${user.accessToken}`,
-    //                 }
-    //             })
-    //                 .then(data => {
-    //                     navigate('/allVehicles')
-    //                     setRefetch(!refetch)
-    //                     Swal.fire({
-    //                         title: "Deleted!",
-    //                         text: "Your vehicle has been deleted.",
-    //                         icon: "success"
-    //                     });
-
-    //                 })
-    //                 .catch(err => {
-    //                     console.log(err);
-    //                 })
-    //         }
-    //     });
-
-    // }
     const handleBack=()=>{
         navigate('/myBookings')
     }
@@ -119,6 +63,9 @@ const VehicleDetails = () => {
                             </div>
                             <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
                                 Booked: {vehicle.booked}
+                            </div>
+                            <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
+                                Price: {vehicle.pricePerDay}
                             </div>
                         </div>
 

@@ -17,20 +17,20 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [myVehicles, SetMyVehicles] = useState([])
+    // const [myVehicles, SetMyVehicles] = useState([])
     const axiosInstance = useAxios()
-    useEffect(() => {
-        if (!user || !user.accessToken) return;
-        axiosInstance.get(`/my-bookings?email=${user.email}`, {
-            headers: {
-                authorization: `Bearer ${user.accessToken}`
-            }
-        })
-            .then(data => {
-                SetMyVehicles(data.data)
-                setLoading(false)
-            })
-    }, [axiosInstance, user])
+    // useEffect(() => {
+    //     if (!user || !user.accessToken) return;
+    //     axiosInstance.get(`/my-bookings?email=${user.email}`, {
+    //         headers: {
+    //             authorization: `Bearer ${user.accessToken}`
+    //         }
+    //     })
+    //         .then(data => {
+    //             SetMyVehicles(data.data)
+    //             setLoading(false)
+    //         })
+    // }, [axiosInstance, user])
 
     const createUserWithEmailAndPasswordFunc = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
@@ -59,7 +59,7 @@ const AuthProvider = ({ children }) => {
     };
 
     const authInfo = {
-        myVehicles,
+        // myVehicles,
         user,
         setUser,
         createUserWithEmailAndPasswordFunc,
