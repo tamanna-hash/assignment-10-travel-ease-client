@@ -83,6 +83,7 @@ return (
                                     <option value="SUV">SUV</option>
                                     <option value="Electric">Electric</option>
                                     <option value="Van">Van</option>
+                                    <option value="Honda">Honda</option>
                                 </select>
                             </div>
                             {/* Price per day*/}
