@@ -4,6 +4,7 @@ import useAxios from '../hooks/useAxios';
 import { AuthContext } from '../provider/AuthContext';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import Loading from './Loading';
 
 const VehicleDetails = () => {
     const { id } = useParams();
@@ -11,6 +12,7 @@ const VehicleDetails = () => {
     const axiosInstance = useAxios()
     const [vehicle, setVehicle] = useState({})
     const [loading, setLoading] = useState(true)
+    const [refetch, setRefetch] = useState(false)
     const navigate = useNavigate()
     useEffect(() => {
         if (!user || !user.accessToken) return;
@@ -24,12 +26,21 @@ const VehicleDetails = () => {
             })
             .catch((err) => console.error(err))
             .finally(() => setLoading(false));
-    }, [id, user, axiosInstance]);
+        // ////for booking-details
+        // axiosInstance.get(`/all-bookings/${id}`, {
+        //     headers: {
+        //         authorization: `Bearer ${user.accessToken}`,
+        //     }
+        // })
+        //     .then(res => {
+        //         setVehicle(res.data)
+        //     })
+        //     .catch((err) => console.error(err))
+        //     .finally(() => setLoading(false))
+    }, [id, user, axiosInstance, refetch]);
     if (loading || !user) {
         return (
-            <div className="flex items-center justify-center h-screen">
-                <span className="loading loading-spinner loading-lg"></span>
-            </div>
+            <Loading></Loading>
         );
     }
     const handleRequestRide = () => {
@@ -44,12 +55,16 @@ const VehicleDetails = () => {
             coverImage: vehicle.coverImage,
             userEmail: vehicle.userEmail,
             createdAt: new Date(),
-            bookingBy: user.email
+            bookingBy: user.email,
+            rate: vehicle.rate,
+            booked: vehicle.booked,
+            // _id: vehicle._id,
         }
-        axiosInstance.post('/my-bookings', requestVehicle)
-            .then(res => {
+        axiosInstance.post(`/my-bookings/${vehicle._id}`, requestVehicle)
+            .then(
                 toast.success('successfully booked')
-            })
+            )
+            .catch(err => console.log(err))
     }
     const handleDelete = () => {
         Swal.fire({
@@ -69,12 +84,16 @@ const VehicleDetails = () => {
                 })
                     .then(data => {
                         navigate('/allVehicles')
+                        setRefetch(!refetch)
                         Swal.fire({
                             title: "Deleted!",
                             text: "Your vehicle has been deleted.",
                             icon: "success"
                         });
 
+                    })
+                    .catch(err => {
+                        console.log(err);
                     })
             }
         });
@@ -104,6 +123,9 @@ const VehicleDetails = () => {
 
                             <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
                                 Owner: {vehicle.owner}
+                            </div>
+                            <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
+                                Booked: {vehicle.booked}
                             </div>
                         </div>
 

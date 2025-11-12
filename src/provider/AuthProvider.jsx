@@ -4,20 +4,33 @@ import {
     createUserWithEmailAndPassword,
     GoogleAuthProvider,
     onAuthStateChanged,
-    sendPasswordResetEmail,
     signInWithEmailAndPassword,
     signInWithPopup,
     signOut,
     updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase/Firebase.config";
+import useAxios from "../hooks/useAxios";
 
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-
+    const [myVehicles, SetMyVehicles] = useState([])
+    const axiosInstance = useAxios()
+    useEffect(() => {
+        if (!user || !user.accessToken) return;
+        axiosInstance.get(`/my-bookings?email=${user.email}`, {
+            headers: {
+                authorization: `Bearer ${user.accessToken}`
+            }
+        })
+            .then(data => {
+                SetMyVehicles(data.data)
+                setLoading(false)
+            })
+    }, [axiosInstance, user])
 
     const createUserWithEmailAndPasswordFunc = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
@@ -44,19 +57,15 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return signOut(auth);
     };
-    const sendPassResetEmailFunc = (email) => {
-        setLoading(true);
-        return sendPasswordResetEmail(auth, email);
-    };
 
     const authInfo = {
+        myVehicles,
         user,
         setUser,
         createUserWithEmailAndPasswordFunc,
         signInWithEmailAndPasswordFunc,
         signInWithEmailFunc,
         signoutUserFunc,
-        sendPassResetEmailFunc,
         updateProfileFunc,
         loading,
         setLoading,

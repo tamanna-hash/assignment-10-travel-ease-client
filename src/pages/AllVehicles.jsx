@@ -10,6 +10,7 @@ const AllVehicles = () => {
     const { user } = use(AuthContext)
     const axiosInstance = useAxios()
     useEffect(() => {
+        if (!user || !user.accessToken) return;
         axiosInstance.get('/all-vehicles')
             .then(data => {
                 SetVehicles(data.data)
@@ -81,7 +82,9 @@ const AllVehicles = () => {
                 </div>
                 <h1>{vehicles.length}</h1>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-12 justify-between'>
-                    {vehicles.map(vehicle => <VehicleCard key={vehicle.id} vehicle={vehicle}></VehicleCard>)}
+                    {vehicles.map(vehicle =>
+                        <VehicleCard key={vehicle.id} vehicle={vehicle}></VehicleCard>
+                    )}
                 </div>
             </div>
         </>
