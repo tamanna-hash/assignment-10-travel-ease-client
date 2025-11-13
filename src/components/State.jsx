@@ -6,7 +6,7 @@ const State = () => {
             {/* <div className=' flex items-center justify-center'>
                 <img src={heroImg} className=' w-[500px]' alt="" />
             </div> */}
-            <div className='text-center md:py-18 text-white bg-linear-to-r from-cyan-900 via-cyan-800 to-cyan-600'>
+            <div className='text-center md:py-18 text-white bg-linear-to-r from-cyan-800 via-cyan-700 to-cyan-600'>
                 <h1 className='text-2xl md:text-4xl font-bold mb-12'>Trusted by Millions, Built for You</h1>
                 <div className='flex justify-around md:px-42' >
                     <div className='space-y-3.5 p-3 rounded-lg bg-linear-to-r from-[#461ea3] to-[#ae83ea]'>

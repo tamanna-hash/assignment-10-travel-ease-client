@@ -8,9 +8,12 @@ import travel2 from '../assets/travel2.jpg';
 const TopCategories = () => {
     return (
         <div className="max-container jost flex flex-col">
-            <h1 className="section-title mt-9 mb-4 md:my-20 animate__animated animate__fadeInUp">
-                Our Top Categories
-            </h1>
+            <div className='mt-9 mb-4 md:my-20'>
+                <p className='text-center text-cyan-700 satisfy md:text-lg'>Drive Freedom with Every Ride.</p>
+                <h1 className="section-title  animate__animated animate__fadeInUp">
+                    Our Top Categories
+                </h1>
+            </div>
 
             <motion.div
                 initial="hidden"
