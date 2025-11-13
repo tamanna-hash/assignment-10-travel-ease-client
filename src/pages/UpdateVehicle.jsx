@@ -146,7 +146,7 @@ const UpdateVehicle = () => {
                                  defaultValue={vehicle.coverImage}
                                 required
                             />
-                            <button type="submit" className="btn text-xs md:text-base bg-blue-100 mt-4 hover:scale-102">
+                            <button type="submit" className="btn px-4 py-2 font-bold text-white hover:bg-linear-to-r bg-cyan-700  hover:from-cyan-800 hover:via-cyan-700 hover:to-cyan-500 transition-transform">
                                 Update Vehicle
                             </button>
                         </fieldset>

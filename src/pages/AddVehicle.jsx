@@ -147,7 +147,7 @@ return (
                             defaultValue={user.email}
                             required
                         />
-                        <button type="submit" className="btn text-xs md:text-base bg-blue-100 mt-4 hover:scale-102">
+                        <button type="submit" className="btn text-xs md:text-base bg-cyan-700 text-white mt-4 hover:scale-102">
                             Add Vehicle
                         </button>
                     </fieldset>

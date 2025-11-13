@@ -44,24 +44,25 @@ const Home = () => {
     }
     return (
         <>
-
-            {/* <div><h1>my bookings: {myBooking.length}</h1></div> */}
             <div className='jost'>
                 <Banner></Banner>
                 <div className=' max-w-[1200px] mx-auto'>
-                    <h1 className='section-title my-9 md:my-20'>Latest Vehicles</h1>
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-12 justify-between'>
-                        {vehicles.map(vehicle => <VehicleCard key={vehicle._id} vehicle={vehicle}></VehicleCard>)}
+                    <div className='my-9 md:mt-20'>
+                        <p className='text-center text-cyan-700 satisfy md:text-lg'>Your adventure starts here</p>
+                        <h1 className='section-title md:mb-20 '>Latest Vehicles</h1>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-12 justify-between'>
+                            {vehicles.map(vehicle => <VehicleCard key={vehicle._id} vehicle={vehicle}></VehicleCard>)}
+                        </div>
                     </div>
-                    <TopCategories/>
+                    <TopCategories />
                     <h1 className='section-title my-9 md:my-20'>Top Rated Vehicles</h1>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-12 justify-between'>
                         {topVehicles.map(vehicle => <VehicleCard key={vehicle._id} vehicle={vehicle}></VehicleCard>)}
                     </div>
-                     <h1 className='section-title my-9 md:my-20'>About 
-                         <span className="md:text-3xl satisfy ml-5 font-bold ">Travel<span className='text-amber-400'>Ease</span> </span>
-                     </h1>
-                     <About/>
+                    <h1 className='section-title my-9 md:my-20'>About
+                        <span className="md:text-3xl satisfy ml-5 font-bold ">Travel<span className='text-amber-400'>Ease</span> </span>
+                    </h1>
+                    <About />
                 </div>
             </div>
         </>
