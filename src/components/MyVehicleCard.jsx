@@ -68,7 +68,7 @@ const VehicleCard = ({ vehicle }) => {
                 <Link
                     to={`/update-vehicle/${vehicle._id}`}
                     className="btn btn-outline outline-cyan-800 font-bold  hover:bg-cyan-100 btn-sm text-xs transition-transform">
-                    Update Model <GrUpdate className="text-green-600 h-3 w-3" />
+                    Update <GrUpdate className="text-green-600 h-3 w-3" />
                 </Link>
                 <button
                     onClick={handleDelete}

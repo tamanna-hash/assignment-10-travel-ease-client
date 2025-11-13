@@ -12,11 +12,9 @@ const VehicleCard = ({ vehicle }) => {
                 </div>
                 <div>
                     <h1 className='text-lg font-bold mb-2'>{vehicleName}</h1>
-                    {/* <div className='md:flex gap-3'> */}
-                        <p className='badge badge-accent badge-outline p-4'>{category}</p>
-                        <p className='text-sm'>Price per day: {pricePerDay}$</p>
-                        <p className='flex gap-2 items-center text-sm'>Rating: {rating}<FaStar className='h-5 w-5 text-amber-400' alt="" /></p>
-                    {/* </div> */}
+                    <p className='badge badge-accent badge-outline p-4'>{category}</p>
+                    <p className='text-sm'>Price per day: {pricePerDay}$</p>
+                    <p className='flex gap-2 items-center text-sm'>Rating: {rating}<FaStar className='h-5 w-5 text-amber-400' alt="" /></p>
                 </div>
             </div>
 
