@@ -99,7 +99,7 @@ const SignUp = () => {
     return (
         <>
             <div className="bg-[#f4f7fd] py-4 flex justify-center min-h-screen items-center">
-                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
+                <div className="card bg-cyan-900/15 border border-cyan-900/30 p-6 w-full max-w-sm shrink-0 shadow-2xl py-5">
                     <h2 className="font-semibold md:text-2xl text-center">
                         Register your account
                     </h2>
@@ -153,7 +153,7 @@ const SignUp = () => {
                                 </span>
                             </div>
 
-                            <button type="submit" className="btn text-xs md:text-base bg-blue-100 mt-4">
+                            <button type="submit" className="btn text-xs md:text-base px-4 py-2 font-bold hover:bg-linear-to-r bg-cyan-700  hover:from-cyan-800 hover:via-cyan-700 hover:to-cyan-500 text-white mt-4 hover:scale-102">
                                 Register
                             </button>
                             <button onClick={handleGoogleSignUp} className="btn text-xs md:text-base bg-white hover:scale-102 text-black border-[#e5e5e5]">

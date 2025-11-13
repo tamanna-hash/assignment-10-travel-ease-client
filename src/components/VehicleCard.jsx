@@ -18,8 +18,8 @@ const VehicleCard = ({ vehicle }) => {
                 visible: { opacity: 1, y: 0 },
             }}
         >
-            <div className="card rounded-none bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                <figure className="md:h-52 h-32 overflow-hidden">
+            <div className="card m-6 md:m-0 rounded-none bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                <figure className="md:h-52 h-42 overflow-hidden">
                     <img
                         src={coverImage}
                         alt={'vehicleImage'}

@@ -47,7 +47,7 @@ const VehicleCard = ({ vehicle }) => {
 
     }
     return (
-        <div className='p-2 animate__animated animate__fadeIn md:p-2 flex md:flex-row flex-col justify-between items-center border-b border-slate-300'>
+        <div className='p-2 animate__animated animate__fadeInUp md:p-2 flex md:flex-row flex-col justify-between items-center border-b border-slate-300'>
             <div className="flex items-center gap-4">
                 <div>
                     <img src={coverImage} alt={'vehicleImage'} className='h-20 w-20' />
@@ -62,17 +62,17 @@ const VehicleCard = ({ vehicle }) => {
                 </div>
             </div>
             <div className="flex justify-between items-center md:mt-0 mt-2 gap-2">
-                <Link to={`/vehicle-details/${_id}`} className="btn btn-outline outline-cyan-800 font-bold text-cyan-900 hover:bg-cyan-100 btn-sm text-xs transition-transform">
-                    View
+                <Link to={`/vehicle-details/${_id}`} className="btn btn-outline outline-cyan-800 font-bold  hover:bg-cyan-100 btn-sm text-xs transition-transform">
+                    View Details
                 </Link>
                 <Link
                     to={`/update-vehicle/${vehicle._id}`}
-                    className="btn btn-outline outline-cyan-800 font-bold text-cyan-900 hover:bg-cyan-100 btn-sm text-xs transition-transform">
+                    className="btn btn-outline outline-cyan-800 font-bold  hover:bg-cyan-100 btn-sm text-xs transition-transform">
                     Update Model <GrUpdate className="text-green-600 h-3 w-3" />
                 </Link>
                 <button
                     onClick={handleDelete}
-                    className="btn btn-outline outline-cyan-800 font-bold text-cyan-900 hover:bg-cyan-100 btn-sm text-xs transition-transform">
+                    className="btn btn-outline outline-cyan-800 font-bold  hover:bg-cyan-100 btn-sm text-xs transition-transform">
                     Delete <MdDeleteForever className="text-red-600 h-4 w-4" />
                 </button>
             </div>

@@ -17,8 +17,8 @@ const Login = () => {
   const from = location.state || "/";
   // const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
-  const emailRef = useRef(null);  
- 
+  const emailRef = useRef(null);
+
   const handleSignin = (e) => {
     e.preventDefault();
     const email = e.target.email?.value;
@@ -38,7 +38,7 @@ const Login = () => {
   };
 
   const handleGoogleSignin = () => {
- 
+
     signInWithEmailFunc()
       .then((res) => {
 
@@ -59,7 +59,7 @@ const Login = () => {
   return (
     <>
       <div className=" bg-[#f4f7fd] py-4 flex justify-center min-h-screen items-center">
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
+        <div className="card bg-cyan-900/15 border border-cyan-900/30 p-6 w-full max-w-sm shrink-0 shadow-xl">
           <h2 className="font-semibold md:text-2xl text-center">
             Login your account
           </h2>
@@ -102,7 +102,7 @@ const Login = () => {
               </div>
 
 
-              <button type="submit" className="btn text-xs md:text-base bg-blue-100 mt-4 hover:scale-102">
+              <button type="submit" className="btn text-xs md:text-base px-4 py-2 font-bold text-white hover:bg-linear-to-r bg-cyan-700  hover:from-cyan-800 hover:via-cyan-700 hover:to-cyan-500 mt-4 hover:scale-102">
                 Login
               </button>
               <Link onClick={handleGoogleSignin} className="btn text-xs md:text-base bg-white hover:scale-102 text-black border-[#e5e5e5]">

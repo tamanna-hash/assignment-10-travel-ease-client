@@ -20,8 +20,8 @@ const VehicleCard = ({ vehicle }) => {
                 </div>
             </div>
 
-            <Link to={`/booking-details/${_id}`} className="btn btn-outline outline-cyan-800 font-bold text-cyan-900 hover:bg-cyan-100 btn-sm text-xs transition-transform">
-                View
+            <Link to={`/booking-details/${_id}`} className="btn btn-outline outline-cyan-800 font-bold  hover:bg-cyan-100 btn-sm text-xs transition-transform">
+                View Details
             </Link>
         </div>
     );

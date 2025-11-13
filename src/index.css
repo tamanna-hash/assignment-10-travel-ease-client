@@ -59,7 +59,7 @@ ul a.active {
 }
 
 .top-card {
-    @apply relative md:h-[200px] md:w-[200px] h-25 pt-4 w-25 bg-cover bg-center shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 
+    @apply relative md:h-[200px] md:w-[200px] h-28 pt-4 w-25 bg-cover bg-center shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 
 }
 
 .footer a {
