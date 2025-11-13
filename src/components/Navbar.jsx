@@ -54,7 +54,7 @@ const Navbar = () => {
                     </div>
                     <div className='flex flex-col md:flex-row gap-2 items-center animate__animated animate__fadeInDown'>
                         <img src={logo5} alt="" className=' md:w-10 md:h-10 h-7 w-7 rounded-[50%]' />
-                        <Link to='/' className="md:text-xl fredoka font-bold text-white">Travel<span className='text-amber-400'>Ease</span> </Link>
+                        <Link to='/' className="md:text-xl satisfy font-bold text-white">Travel<span className='text-amber-400'>Ease</span> </Link>
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">

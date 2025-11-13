@@ -39,7 +39,7 @@ const Banner = () => {
             <div className="absolute inset-0 bg-black/50 z-0"></div>
 
             {/* Content */}
-            <div className="relative z-10 animate__animated animate__fadeInUp flex flex-col items-center justify-center h-full text-center text-white px-4">
+            <div className="relative jost z-10 animate__animated animate__fadeInUp flex flex-col items-center justify-center h-full text-center text-white px-4">
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">Explore the World, Effortlessly</h1>
                 <p className="text-base md:text-lg lg:text-xl mb-6">
                     Book trips, discover destinations, and travel with ease.

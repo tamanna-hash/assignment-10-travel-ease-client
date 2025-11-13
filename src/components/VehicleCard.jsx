@@ -2,22 +2,22 @@ import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
 const VehicleCard = ({ vehicle }) => {
-    const { vehicleName, coverImage, category,availability, description, rating, _id, owner } = vehicle
-    
+    const { vehicleName, coverImage, category, availability, description, rating, _id, owner } = vehicle
+
     return (
-        // <motion.div
-        //     initial="hidden"
-        //     whileInView="visible"
-        //     viewport={{ once: true }}
-        //     transition={{
-        //         duration: 0.75,
-        //         ease: "easeInOut"
-        //     }}
-        //     variants={{
-        //         hidden: { opacity: 0, y: 50 },
-        //         visible: { opacity: 1, y: 0 },
-        //     }}
-        // >
+        <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{
+                duration: 0.75,
+                ease: "easeInOut"
+            }}
+            variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: { opacity: 1, y: 0 },
+            }}
+        >
             <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
                 <figure className="h-48 overflow-hidden">
                     <img
@@ -44,7 +44,7 @@ const VehicleCard = ({ vehicle }) => {
                     </div>
                 </div>
             </div>
-        // </motion.div>
+        </motion.div>
     );
 };
 export default VehicleCard;

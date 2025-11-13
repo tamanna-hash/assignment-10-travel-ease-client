@@ -11,7 +11,7 @@ const Footer = () => {
                     <div className='flex flex-col gap-2'>
                         <div className='flex flex-col md:flex-row gap-2 items-center'>
                             <img src={logo5} alt="" className=' md:w-10 md:h-10 h-7 w-7 rounded-[50%]' />
-                            <Link to='/' className="md:text-xl fredoka font-bold text-white">Travel<span className='text-amber-400'>Ease</span> </Link>
+                            <Link to='/' className="md:text-xl satisfy font-bold text-white">Travel<span className='text-amber-400'>Ease</span> </Link>
                         </div>
                         <p className='text-slate-200'>
                             Travel smarter. Travel easier. Travel with Travelease. <br />

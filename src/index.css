@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Satisfy&family=Stack+Sans+Notch:wght@200..700&display=swap');
+
 @import "tailwindcss";
 
 @plugin "daisyui" {
@@ -7,20 +9,59 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 @import 'animate.css';
 
-ul a {
-    @apply text-white 
+.jost {
+    font-family: "Jost", sans-serif;
 }
+
+.satisfy {
+    font-family: "Satisfy", sans-serif;
+}
+
+.roboto {
+    font-family: "Roboto", sans-serif;
+}
+
+.sans {
+    font-family: "Stack Sans Notch", sans-serif;
+}
+
+.section-title {
+    @apply text-3xl md:text-4xl font-semibold text-center
+}
+
+.sub-title {
+    @apply text-xl md:text-2xl font-semibold text-center
+}
+
+ul a {
+    @apply text-white
+}
+
 ul a:hover {
-    @apply  text-amber-300
+    @apply text-amber-300
 }
 
 ul a.active {
-    @apply underline underline-offset-4 
+    @apply underline underline-offset-4
 }
 
 .i {
     @apply h-4 w-4 md:h-5 md:w-5 hover:bg-amber-400 m-2 rounded-2xl text-white
 }
-.footer a{
+
+/* top categories section */
+.top-h1 {
+    @apply md:text-2xl font-semibold text-center text-white
+}
+
+.top-i {
+    @apply h-7 w-7 md:h-16 md:w-16 text-white
+}
+
+.top-card {
+    @apply relative md:h-[200px] md:w-[200px] h-25 pt-4 w-25 bg-cover bg-center shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 
+}
+
+.footer a {
     @apply hover:text-amber-400
 }
