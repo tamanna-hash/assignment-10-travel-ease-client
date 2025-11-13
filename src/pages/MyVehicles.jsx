@@ -27,7 +27,9 @@ const MyVehicles = () => {
     return (
         <>
             <div className=' max-w-[1200px] mx-auto'>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-12 justify-between'>
+                <h1 className='section-title jost my-7 md:my-8'>My Vehicles:</h1>
+                 <p className='md:text-lg font-semibold'><span>({myVehicles.length})</span> Apps Found</p>
+                <div className='grid my-9 md:my-12'>
                     {myVehicles.map(vehicle => <MyVehicleCard key={vehicle._id} vehicle={vehicle}></MyVehicleCard>)}
                 </div>
             </div>

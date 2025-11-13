@@ -40,7 +40,7 @@ const AddVehicle = () => {
     }
 return (
     <>
-        <div className="bg-[#f4f7fd] py-4 flex justify-center min-h-screen items-center">
+        <div className="bg-transparent py-4 flex justify-center min-h-screen items-center">
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
                 <h2 className="font-semibold md:text-2xl text-center">
                     Add vehicle

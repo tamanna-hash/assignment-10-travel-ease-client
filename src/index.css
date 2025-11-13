@@ -46,7 +46,7 @@ ul a.active {
 }
 
 .i {
-    @apply h-4 w-4 md:h-5 md:w-5 hover:bg-amber-400 m-2 rounded-2xl text-white
+    @apply h-5 w-5 md:h-7 md:w-7 hover:bg-amber-400 p-1 rounded-2xl text-white
 }
 
 /* top categories section */
@@ -63,5 +63,5 @@ ul a.active {
 }
 
 .footer a {
-    @apply hover:text-amber-400
+    @apply hover:text-amber-400 m-2
 }

@@ -35,6 +35,7 @@ const AllVehicles = () => {
                 const url = sortOrder ? `/all-vehicles?sort=${sortOrder}` : "/all-vehicles";
                 const res = await axiosInstance.get(url);
                 SetVehicles(res.data);
+                setLoading(false)
             } catch (err) {
                 console.error(err);
             }
@@ -85,7 +86,7 @@ const AllVehicles = () => {
                         </select>
                     </div>
                 </div>
-                <h1 className='text-lg mt-4 font-semibold'>In our collection: {vehicles.length} vehicles are available</h1>
+                <h1 className='text-lg mt-4 font-semibold'><span className='font-bold'>In our collection:</span> {vehicles.length} vehicles are available</h1>
                 <div className='grid grid-cols-1 mt-7 md:mt-12 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-12 justify-between'>
                     {vehicles.map(vehicle =>
                         <VehicleCard key={vehicle.id} vehicle={vehicle}></VehicleCard>

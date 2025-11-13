@@ -5,6 +5,7 @@ import { AuthContext } from '../provider/AuthContext';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import Loading from './Loading';
+import { FaStar } from 'react-icons/fa';
 
 const VehicleDetails = () => {
     const { id } = useParams();
@@ -116,50 +117,36 @@ const VehicleDetails = () => {
                     </div>
 
                     <div className="flex flex-col justify-center space-y-4 w-full md:w-1/2">
-                        <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
-                            {vehicle.vehicleName}
-                        </h1>
-
-                        <div className="flex gap-3">
-                            <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
-                                {vehicle.category}
-                            </div>
-
-                            <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
-                                Owner: {vehicle.owner}
-                            </div>
-                            <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
-                                Booked: {vehicle.booked}
-                            </div>
-                            <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
-                                Price: {vehicle.pricePerDay}
-                            </div>
-                        </div>
-
-                        <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                            {vehicle.description}
+                        <h2 className="card-title md:text-2xl">{vehicle.vehicleName}</h2>
+                        <div className="badge badge-outline badge-accent font-semibold ">
+                            Category: {vehicle.category}</div>
+                        <div><span className=" font-semibold">Owner:</span> {vehicle.owner}</div>
+                        <div> <span className='font-semibold'>Location:</span>  {vehicle.location}</div>
+                        <div> <span className='font-semibold'>Price per day:</span>  {vehicle.pricePerDay}$</div>
+                        <p className='gap-2 items-center'><span className='font-semibold'></span>
+                            <span className='font-semibold'>Availability:</span>{vehicle.availability}
+                        </p>
+                        <p className="flex items-center"><span className='font-semibold'>Rate:</span>
+                            {vehicle.rating}<FaStar className="text-amber-400 text-xl" />
+                        </p>
+                        <p className=" ">
+                            <span className='font-semibold'>Description:</span> {vehicle.description}
                         </p>
 
                         <div className="flex gap-3 mt-6">
-                            {/* <Link
-                                to={`/update-vehicle/${vehicle._id}`}
-                                className="btn btn-primary rounded-full bg-linear-to-r from-pink-500 to-red-600 text-white border-0 hover:from-pink-600 hover:to-red-700"
-                            >
-                                Update Model
-                            </Link> */}
+
                             <button
                                 onClick={handleRequestRide}
-                                className="btn btn-secondary rounded-full"
+                                className="btn px-4 py-2  font-bold text-white hover:bg-linear-to-r bg-cyan-700  hover:from-cyan-800 hover:via-cyan-700 hover:to-cyan-500 transition-transform"
                             >
                                 Request Ride
                             </button>
-                            <div className="flex gap-3 mt-6">
-                                <button onClick={handleBack}
-                                    className="btn btn-outline rounded-full border-gray-300 hover:border-pink-500 hover:text-pink-600"
-                                >
-                                    Back
-                                </button>
-                            </div>
+                            <button onClick={handleBack}
+                                className="btn px-4 py-2 font-bold text-white hover:bg-linear-to-r bg-cyan-700  hover:from-cyan-800 hover:via-cyan-700 hover:to-cyan-500 transition-transform"
+                            >
+                                Back
+                            </button>
+
                         </div>
                     </div>
                 </div>

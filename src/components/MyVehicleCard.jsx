@@ -1,13 +1,17 @@
 import { Link, Navigate, useNavigate } from "react-router";
 import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
+import { GrUpdate } from "react-icons/gr";
 import useAxios from "../hooks/useAxios";
 import Swal from "sweetalert2";
+import { AiOutlineDelete } from "react-icons/ai";
+
 import { AuthContext } from "../provider/AuthContext";
 import { use } from "react";
+import { MdDeleteForever } from "react-icons/md";
 const VehicleCard = ({ vehicle }) => {
     const { user } = use(AuthContext)
-    const { vehicleName, coverImage, category, availability, description, rating, _id, owner } = vehicle
+    const { vehicleName, coverImage, category, pricePerDay, rating, _id, owner } = vehicle
     const navigate = useNavigate()
     const axiosInstance = useAxios()
     const handleDelete = () => {
@@ -43,58 +47,37 @@ const VehicleCard = ({ vehicle }) => {
 
     }
     return (
-        // <motion.div
-        //     initial="hidden"
-        //     whileInView="visible"
-        //     viewport={{ once: true }}
-        //     transition={{
-        //         duration: 0.75,
-        //         ease: "easeInOut"
-        //     }}
-        //     variants={{
-        //         hidden: { opacity: 0, y: 50 },
-        //         visible: { opacity: 1, y: 0 },
-        //     }}
-        // >
-        <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-            <figure className="h-48 overflow-hidden">
-                <img
-                    src={coverImage}
-                    alt={'vehicleImage'}
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                />
-            </figure>
-            <div className="card-body">
-                <h2 className="card-title">{vehicleName}</h2>
-                <div className="badge text-xs badge-xs badge-secondary rounded-full">{category}</div>
-                <div className="text-xs text-secondary">{owner}</div>
-                <p className="line-clamp-1">
-                    {description}
-                </p>
-                <p className="flex gap-2 items-center">
-                    rate:{rating}<FaStar className="text-yellow-400" />
-                </p>
-                <p className="flex gap-2 items-center">
-                    availability:{availability}
-                </p>
-                <div className="card-actions justify-between items-center mt-4">
-                    <Link to={`/vehicle-details/${_id}`} className="btn rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm">View</Link>
+        <div className='p-2 animate__animated animate__fadeIn md:p-2 flex md:flex-row flex-col justify-between items-center border-b border-slate-300'>
+            <div className="flex items-center gap-4">
+                <div>
+                    <img src={coverImage} alt={'vehicleImage'} className='h-20 w-20' />
                 </div>
+                <div>
+                    <h1 className='text-lg font-bold mb-2'>{vehicleName}</h1>
+                    <div className='md:flex gap-3'>
+                        <p className='badge badge-accent badge-outline'>{category}</p>
+                        <p className='text-sm flex items-center'>Price per day: {pricePerDay}$</p>
+                        <p className='flex gap-2 items-center text-sm'>Rating: {rating}<FaStar className='h-5 w-5 text-amber-400' alt="" /></p>
+                    </div>
+                </div>
+            </div>
+            <div className="flex justify-between items-center md:mt-0 mt-2 gap-2">
+                <Link to={`/vehicle-details/${_id}`} className="btn btn-outline outline-cyan-800 font-bold text-cyan-900 hover:bg-cyan-100 btn-sm text-xs transition-transform">
+                    View
+                </Link>
                 <Link
                     to={`/update-vehicle/${vehicle._id}`}
-                    className="btn btn-primary rounded-full bg-linear-to-r from-pink-500 to-red-600 text-white border-0 hover:from-pink-600 hover:to-red-700"
-                >
-                    Update Model
+                    className="btn btn-outline outline-cyan-800 font-bold text-cyan-900 hover:bg-cyan-100 btn-sm text-xs transition-transform">
+                    Update Model <GrUpdate className="text-green-600 h-3 w-3" />
                 </Link>
                 <button
                     onClick={handleDelete}
-                    className="btn btn-outline rounded-full border-gray-300 hover:border-pink-500 hover:text-pink-600"
-                >
-                    Delete
+                    className="btn btn-outline outline-cyan-800 font-bold text-cyan-900 hover:bg-cyan-100 btn-sm text-xs transition-transform">
+                    Delete <MdDeleteForever className="text-red-600 h-4 w-4" />
                 </button>
             </div>
-        </div>
-        // </motion.div>
+
+        </div >
     );
 };
 export default VehicleCard;

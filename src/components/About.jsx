@@ -12,7 +12,7 @@ const About = () => {
                         className="max-w-sm md:h-auto h-60 rounded-lg shadow-2xl"
                     />
                     <div className='items-start'>
-                        <p className='satisfy text-2xl text-center text-sky-400'>Why Choose Us</p>
+                        <p className='satisfy text-xl md:text-3xl text-center text-sky-400'>Why Choose Us</p>
                         <h1 className="md:text-5xl text-3xl text-center font-bold">
                             What are our Advantages</h1>
 

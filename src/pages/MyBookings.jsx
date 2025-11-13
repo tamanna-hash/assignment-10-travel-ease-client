@@ -28,7 +28,7 @@ const MyBookings = () => {
     return (
         <>
             <div className=' max-w-[1200px] mx-auto'>
-               <motion.div
+                <motion.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
@@ -41,9 +41,10 @@ const MyBookings = () => {
                         visible: { opacity: 1, y: 0 },
                     }}
                 >
+                    <h1 className='section-title jost my-7 md:my-12'>My Bookings:</h1> 
                     {myVehicles.length === 0 ?
-                        <h1 className='text-4xl'>oops nothing booked yet</h1> :
-                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-12 justify-between'>
+                        <h1 className='jost section-title'>Booked Ride Will Be Shown Below</h1> :
+                        <div className='grid grid-cols-1 md:grid-cols-2  gap-2 md:gap-12 justify-center md:justify-between'>
                             {myVehicles.map(vehicle => <BookingCard key={vehicle._id} vehicle={vehicle}></BookingCard>)}
                         </div>
                     }
