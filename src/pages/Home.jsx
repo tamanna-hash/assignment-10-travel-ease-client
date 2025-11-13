@@ -11,11 +11,9 @@ import State from '../components/State';
 const Home = () => {
     const [vehicles, setVehicles] = useState([])
     const [topVehicles, setTopVehicles] = useState([])
-    // const [myBooking, setMyBooking] = useState([])
     const { user, loading, setLoading } = use(AuthContext)
     const axiosInstance = useAxios()
     useEffect(() => {
-        if (!user || !user.accessToken) return;
         axiosInstance.get('/latest-vehicles')
             .then(data => {
                 setVehicles(data.data)
@@ -26,15 +24,7 @@ const Home = () => {
                 setTopVehicles(data.data)
 
             })
-            // axiosInstance.get(`/my-bookings?email=${user.email}`, {
-            //     headers: {
-            //         authorization: `Bearer ${user.accessToken}`
-            //     }
-            // })
-            // .then(data => {
-            //     // setMyBooking(data.data)
-
-            // })
+    
             .catch(err => console.log(err))
 
     }, [axiosInstance, user, setLoading])
