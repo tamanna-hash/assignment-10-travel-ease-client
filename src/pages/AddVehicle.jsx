@@ -40,6 +40,7 @@ const AddVehicle = () => {
     }
 return (
     <>
+    <title>TravelEase-AddVehicles</title>
         <div className="py-4 bg-[#f4f7fd] flex justify-center min-h-screen items-center ">
             <div className="card bg-cyan-900/15 border border-cyan-900/30 p-4 w-full max-w-sm shrink-0 shadow-xl">
                 <h2 className="font-semibold md:text-2xl text-center">

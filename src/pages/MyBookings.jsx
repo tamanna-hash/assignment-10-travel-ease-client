@@ -27,6 +27,7 @@ const MyBookings = () => {
     )
     return (
         <>
+        <title>TravelEase-MyBookings</title>
             <div className=' max-w-[1200px] mx-auto'>
                 <motion.div
                     initial="hidden"
