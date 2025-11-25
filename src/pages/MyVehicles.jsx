@@ -29,7 +29,7 @@ const MyVehicles = () => {
          <title>TravelEase-MyVehicles</title>
             <div className=' max-w-[1200px] mx-auto'>
                 <h1 className='section-title jost my-7 md:my-8'>My Vehicles:</h1>
-                 <p className='md:text-lg font-semibold'><span>({myVehicles.length})</span> Apps Found</p>
+                 <p className='md:text-lg font-semibold'><span>({myVehicles.length})</span> Vehicles Found</p>
                 <div className='grid my-9 md:my-12'>
                     {myVehicles.map(vehicle => <MyVehicleCard key={vehicle._id} vehicle={vehicle}></MyVehicleCard>)}
                 </div>
