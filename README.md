@@ -2,6 +2,7 @@
 
 **TravelEase** is a vehicle booking platform that makes travel easier and more convenient. Users can explore, book, and manage vehicles with just a few clicks — all in one place!  
 <img src="https://github.com/tamanna-hash/assignment-10-travel-ease-client/blob/main/travelease.png?raw=true" height="300px" width="400px">
+
 🔗 **Live Site:** [TravelEase Website](https://t-travelease.netlify.app/)
 
 ---
