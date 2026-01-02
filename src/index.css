@@ -26,7 +26,7 @@
 }
 
 .section-title {
-    @apply text-3xl md:text-4xl font-semibold text-center
+    @apply text-xl md:text-2xl font-semibold text-center
 }
 
 .sub-title {
@@ -42,7 +42,7 @@ ul a:hover {
 }
 
 ul a.active {
-    @apply underline underline-offset-4
+    @apply underline underline-offset-4 text-amber-300
 }
 
 .i {

@@ -7,8 +7,8 @@ import travel2 from '../assets/travel2.jpg';
 
 const TopCategories = () => {
     return (
-        <div className="max-container jost flex flex-col">
-            <div className='mt-9 mb-4 md:my-20'>
+        <div className="max-container jost flex flex-col bg-base-300">
+            <div className='mt-9 mb-4 md:my-12'>
                 <p className='text-center text-cyan-700 satisfy md:text-lg'>Drive Freedom with Every Ride.</p>
                 <h1 className="section-title  animate__animated animate__fadeInUp">
                     Our Top Categories
@@ -32,10 +32,10 @@ const TopCategories = () => {
 
                     {/* ELECTRIC */}
                     <div
-                        className="relative top-card group bg-cover bg-center"
+                        className="relative top-card rounded-lg group bg-cover bg-center"
                         style={{ backgroundImage: `url(${travel2})` }}
                     >
-                        <div className="absolute inset-0 bg-black/30 transition duration-300 group-hover:bg-black/10"></div>
+                        <div className="absolute inset-0 bg-black/40 transition duration-300 group-hover:bg-black/10"></div>
                         <div className="relative z-10 text-center">
                             <MdElectricCar className="top-i mx-auto" />
                             <h1 className="top-h1">ELECTRIC</h1>
@@ -45,10 +45,10 @@ const TopCategories = () => {
 
                     {/* SEDAN */}
                     <div
-                        className="relative top-card group bg-cover bg-center"
+                        className="relative rounded-lg top-card group bg-cover bg-center"
                         style={{ backgroundImage: `url(${travel2})` }}
                     >
-                        <div className="absolute inset-0 bg-black/30 transition duration-300 group-hover:bg-black/10"></div>
+                        <div className="absolute inset-0 bg-black/40 transition duration-300 group-hover:bg-black/10"></div>
                         <div className="relative z-10 text-center">
                             <FaCarSide className="top-i mx-auto" />
                             <h1 className="top-h1">SEDAN</h1>
@@ -58,10 +58,10 @@ const TopCategories = () => {
 
                     {/* SUV */}
                     <div
-                        className="relative top-card group bg-cover bg-center"
+                        className="relative rounded-lg top-card group bg-cover bg-center"
                         style={{ backgroundImage: `url(${travel2})` }}
                     >
-                        <div className="absolute inset-0 bg-black/30 transition duration-300 group-hover:bg-black/10"></div>
+                        <div className="absolute inset-0 bg-black/40 transition duration-300 group-hover:bg-black/10"></div>
                         <div className="relative z-10 text-center">
                             <FaCarAlt className="top-i mx-auto" />
                             <h1 className="top-h1">SUV</h1>
@@ -71,10 +71,10 @@ const TopCategories = () => {
 
                     {/* HONDA */}
                     <div
-                        className="relative top-card group bg-cover bg-center"
+                        className="relative rounded-lg top-card group bg-cover bg-center"
                         style={{ backgroundImage: `url(${travel2})` }}
                     >
-                        <div className="absolute inset-0 bg-black/30 transition duration-300 group-hover:bg-black/10"></div>
+                        <div className="absolute inset-0 bg-black/40 transition duration-300 group-hover:bg-black/10"></div>
                         <div className="relative z-10 text-center">
                             <RiMotorbikeFill className="top-i mx-auto" />
                             <h1 className="top-h1">HONDA</h1>
