@@ -8,14 +8,14 @@ import VehicleCardSkeleton from "./VehicleCardSkeleton";
 const AllVehicles = () => {
   const [vehicles, SetVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { user } = use(AuthContext);
+  // const { user } = use(AuthContext);
   const axiosInstance = useAxios();
   useEffect(() => {
-    if (!user || !user.accessToken) return;
+    // if (!user || !user.accessToken) return;
     axiosInstance.get("/all-vehicles").then((data) => {
       SetVehicles(data.data);
     });
-  }, [axiosInstance, user]);
+  }, [axiosInstance]);
   const handleSearch = (e) => {
     e.preventDefault();
     const search_text = e.target.search.value;
@@ -71,7 +71,7 @@ const AllVehicles = () => {
             className="flex items-center justify-center w-full md:w-1/2"
           >
             {/* Input */}
-            <div className="flex items-center w-2/3 px-3 py-2 rounded-lg border border-gray-300 focus-within:border-cyan-600 transition">
+            <div className="flex items-center w-3/4 px-3 py-2 rounded-lg border border-gray-300 focus-within:border-cyan-600 transition">
               <svg
                 className="h-5 w-5 text-gray-400"
                 xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@ const AllVehicles = () => {
             {/* Button */}
             <button
               type="submit"
-              className="w-1/3 px-2 py-2 rounded-lg font-semibold text-white
+              className="w-1/4 btn rounded-lg font-semibold text-white
                 bg-linear-to-r from-cyan-800 to-cyan-600
                hover:from-cyan-700 hover:to-cyan-500
                transition"

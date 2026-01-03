@@ -1,6 +1,8 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
+import { use, useState } from "react";
+import { AuthContext } from "../provider/AuthContext";
 const VehicleCard = ({ vehicle }) => {
   const {
     vehicleName,
@@ -10,7 +12,7 @@ const VehicleCard = ({ vehicle }) => {
     pricePerDay,
     rating,
     _id,
-  } = vehicle;
+  } = vehicle || {};
 
   return (
     <motion.div
