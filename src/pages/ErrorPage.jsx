@@ -1,10 +1,14 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import error404 from "../assets/err.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 const ErrorPage = () => {
-  return (
+  const navigate=useNavigate() 
+  const handleNavigate=()=>{
+    navigate(-1)
+  }
+   return (
     <>
       <title>Error-404</title>
       <Navbar />
@@ -16,9 +20,9 @@ const ErrorPage = () => {
         <p className="text-sm text-gray-500 pb-3">
           The page you are looking for is not available.
         </p>
-        <Link to="/" className="px-4 py-2 bg-cyan-900 text-white rounded">
+        <button onClick={handleNavigate} className="px-4 py-2 bg-cyan-900 text-white rounded">
           Go Back !
-        </Link>
+        </button>
       </div>
       <Footer />
     </>

@@ -91,11 +91,11 @@ const VehicleDetails = () => {
       <div className="max-w-5xl mx-auto p-4 md:p-6 lg:p-8">
         <div className="card bg-base-100 shadow-xl border border-gray-200 rounded-2xl overflow-hidden">
           <div className="flex flex-col md:flex-row gap-8 p-6 md:p-8">
-            <div className="shrink-0 w-full md:w-1/2">
+            <div className="shrink-0 w-full md:w-1/2 md:h-[500px]">
               <img
                 src={vehicle?.coverImage}
                 alt=""
-                className="w-full object-cover rounded-xl shadow-md"
+                className="w-full h-full object-cover rounded-xl shadow-md"
               />
             </div>
 
@@ -112,9 +112,9 @@ const VehicleDetails = () => {
                 <span className="font-semibold">Location:</span>{" "}
                 {vehicle?.location}
               </div>
-              <div>
+              <div className="text-red-500 font-semibold">
                 {" "}
-                <span className="font-semibold">Price per day:</span>{" "}
+                <span className="">Price per day:</span>{" "}
                 {vehicle?.pricePerDay}৳
               </div>
               <p className="gap-2 items-center">

@@ -44,34 +44,34 @@ const VehicleDetails = () => {
           <div className="flex flex-col md:flex-row gap-8 p-6 md:p-8">
             <div className="shrink-0 w-full md:w-1/2">
               <img
-                src={vehicle.coverImage}
+                src={vehicle?.coverImage}
                 alt=""
                 className="w-full object-cover rounded-xl shadow-md"
               />
             </div>
 
             <div className="flex flex-col justify-center space-y-4 w-full md:w-1/2">
-              <h2 className="card-title md:text-2xl">{vehicle.vehicleName}</h2>
+              <h2 className="card-title md:text-2xl">{vehicle?.vehicleName}</h2>
               <div className="badge badge-outline badge-accent font-semibold ">
-                Category: {vehicle.category}
+                Category: {vehicle?.category}
               </div>
               <div>
-                <span className=" font-semibold">Owner:</span> {vehicle.owner}
+                <span className=" font-semibold">Owner:</span> {vehicle?.owner}
               </div>
               <div>
                 {" "}
                 <span className="font-semibold">Location:</span>{" "}
-                {vehicle.location}
+                {vehicle?.location}
               </div>
               <div>
                 {" "}
                 <span className="font-semibold">Price per day:</span>{" "}
-                {vehicle.pricePerDay}$
+                {vehicle?.pricePerDay}$
               </div>
               <p className="gap-2 items-center">
                 <span className="font-semibold"></span>
                 <span className="font-semibold">Availability:</span>
-                {vehicle.availability}
+                {vehicle?.availability}
               </p>
               {/* <p className="flex items-center">
                 <span className="flex">
@@ -87,7 +87,7 @@ const VehicleDetails = () => {
               </p> */}
               <p className=" ">
                 <span className="font-semibold">Description:</span>{" "}
-                {vehicle.description}
+                {vehicle?.description}
               </p>
 
               <div className="flex gap-3 mt-6">

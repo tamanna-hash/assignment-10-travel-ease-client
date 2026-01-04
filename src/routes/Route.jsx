@@ -21,6 +21,7 @@ import Contact from "../pages/Contact";
 import TravelPolicy from "../pages/TravelPolicy";
 import TermsOfUse from "../pages/TermsOfUse";
 import TravelCookiePolicy from "../pages/TravelCookiePolicy";
+import Dashboard from "../pages/Dashboard";
 
 export const router = createBrowserRouter([
   {
@@ -85,6 +86,14 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element: <DashboardLayout />,
     children: [
+      {
+        index:true,
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
+      },
       {
         path: "profile",
         element: (

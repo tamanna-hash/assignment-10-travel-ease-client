@@ -23,10 +23,10 @@ const MenuItem = () => {
         <NavLink
           to="/dashboard"
           className="flex items-center gap-3 tooltip tooltip-right"
-          data-tip="Member Overview"
+          data-tip="Overview"
         >
           <FaHome className="text-lg" />
-          <span className="truncate">Member Dashboard</span>
+          <span className="truncate">Overview</span>
         </NavLink>
       </li>
 
