@@ -33,8 +33,8 @@ const WhyChooseUs = () => {
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-cyan-900">
-            Why Choose <span className="text-amber-400">travelEase</span>
+          <h2 className="text-3xl font-bold text-cyan-900">
+            Why Choose <span className="text-amber-400">TravelEase</span>
           </h2>
           <p className="mt-3 text-base-content/70 max-w-2xl mx-auto">
             We make booking vehicles simple, reliable, and stress-free —

@@ -6,52 +6,108 @@ import Loading from "./Loading";
 import VehicleCardSkeleton from "./VehicleCardSkeleton";
 
 const AllVehicles = () => {
-  const [vehicles, SetVehicles] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [vehicles, setVehicles] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedRating, setSelectedRating] = useState("");
+  const [sortOrder, setSortOrder] = useState("");
+  const [loading, setLoading] = useState(false);
+
   // const { user } = use(AuthContext);
   const axiosInstance = useAxios();
   useEffect(() => {
-    // if (!user || !user.accessToken) return;
-    axiosInstance.get("/all-vehicles").then((data) => {
-      SetVehicles(data.data);
-    });
-  }, [axiosInstance]);
-  const handleSearch = (e) => {
-    e.preventDefault();
-    const search_text = e.target.search.value;
-    setLoading(true);
-    axiosInstance.get(`/search?search=${search_text}`).then((data) => {
-      SetVehicles(data.data);
-      setLoading(false);
-    });
-  };
-  const [sortOrder, setSortOrder] = useState("");
-
-  // Fetch vehicles whenever sortOrder changes
-  useEffect(() => {
     const fetchVehicles = async () => {
       try {
-        const url = sortOrder
-          ? `/all-vehicles?sort=${sortOrder}`
-          : "/all-vehicles";
-        const res = await axiosInstance.get(url);
-        SetVehicles(res.data);
-        setLoading(false);
+        setLoading(true);
+
+        const res = await axiosInstance.get("/all-vehicles", {
+          params: {
+            search: debouncedSearch || undefined,
+            category: selectedCategory || undefined,
+            rating: selectedRating || undefined,
+            sort: sortOrder || undefined,
+          },
+        });
+
+        setVehicles(res.data);
       } catch (err) {
         console.error(err);
+      } finally {
+        setLoading(false);
       }
     };
+
     fetchVehicles();
-  }, [sortOrder, axiosInstance]);
+  }, [
+    debouncedSearch,
+    selectedCategory,
+    selectedRating,
+    sortOrder,
+    axiosInstance,
+  ]);
+  const handleReset = () => {
+    setSearchText("");
+    setDebouncedSearch("");
+    setSelectedCategory("");
+    setSelectedRating("");
+    setSortOrder("");
+  };
+
+  // const handleSearch = (e) => {
+  //   e.preventDefault();
+  //   const text = e.target.search.value;
+  //   setSearchText(text);
+  // };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(searchText);
+    }, 500); // 0.5s delay
+
+    return () => clearTimeout(timer);
+  }, [searchText]);
+
+  // useEffect(() => {
+  //   // if (!user || !user.accessToken) return;
+  //   axiosInstance.get("/all-vehicles").then((data) => {
+  //     SetVehicles(data.data);
+  //   });
+  // }, [axiosInstance]);
+  // const handleSearch = (e) => {
+  //   e.preventDefault();
+  //   const search_text = e.target.search.value;
+  //   setLoading(true);
+  //   axiosInstance.get(`/search?search=${search_text}`).then((data) => {
+  //     SetVehicles(data.data);
+  //     setLoading(false);
+  //   });
+  // };
+
+  // Fetch vehicles whenever sortOrder changes
+  // useEffect(() => {
+  //   const fetchVehicles = async () => {
+  //     try {
+  //       const url = sortOrder
+  //         ? `/all-vehicles?sort=${sortOrder}`
+  //         : "/all-vehicles";
+  //       const res = await axiosInstance.get(url);
+  //       SetVehicles(res.data);
+  //       setLoading(false);
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   };
+  //   fetchVehicles();
+  // }, [sortOrder, axiosInstance]);
   if (loading)
     return (
       <>
         <div className="min-h-screen md:mt-20 lg:mt-40 mt-10 flex justify-center items-center">
           <div className=" grid grid-cols-1 mt-7 md:mt-12 md:grid-cols-3 lg:grid-cols-4 gap-2  justify-between">
-          {[...Array(6)].map((_) => (
-            <VehicleCardSkeleton></VehicleCardSkeleton>
-          ))}
-        </div>
+            {[...Array(6)].map((_) => (
+              <VehicleCardSkeleton></VehicleCardSkeleton>
+            ))}
+          </div>
         </div>
       </>
     );
@@ -67,11 +123,11 @@ const AllVehicles = () => {
         </div>
         <div className="flex flex-col md:flex-row gap-3 md:gap-0 justify-between items-center ">
           <form
-            onSubmit={handleSearch}
-            className="flex items-center justify-center w-full md:w-1/2"
+            onSubmit={(e) => e.preventDefault()}
+            className="flex flex-wrap items-center justify-center gap-3 w-full"
           >
-            {/* Input */}
-            <div className="flex items-center w-3/4 px-3 py-2 rounded-lg border border-gray-300 focus-within:border-cyan-600 transition">
+            {/* Search */}
+            <div className="flex items-center w-full md:w-1/4 px-3 py-2 rounded-lg border border-gray-300 focus-within:border-cyan-600 bg-white">
               <svg
                 className="h-5 w-5 text-gray-400"
                 xmlns="http://www.w3.org/2000/svg"
@@ -79,56 +135,86 @@ const AllVehicles = () => {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
               >
                 <circle cx="11" cy="11" r="8" />
                 <path d="m21 21-4.3-4.3" />
               </svg>
               <input
                 type="search"
-                name="search"
-                required
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
                 placeholder="Search by vehicle name"
                 className="w-full ml-2 outline-none bg-transparent text-sm"
               />
             </div>
 
-            {/* Button */}
-            <button
-              type="submit"
-              className="w-1/4 btn rounded-lg font-semibold text-white
-                bg-linear-to-r from-cyan-800 to-cyan-600
-               hover:from-cyan-700 hover:to-cyan-500
-               transition"
+            {/* Category */}
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="w-full md:w-1/6 px-3 py-2 rounded-lg border border-gray-300 text-sm focus:border-cyan-600"
             >
-              {loading ? "Searching..." : "Search"}
+              <option value="">All Categories</option>
+              <option value="Sedan">Sedan</option>
+              <option value="SUV">SUV</option>
+              <option value="Electric">Electric</option>
+              <option value="Van">Van</option>
+              <option value="Honda">Honda</option>
+            </select>
+
+            {/* Rating */}
+            <select
+              value={selectedRating}
+              onChange={(e) => setSelectedRating(e.target.value)}
+              className="w-full md:w-1/6 px-3 py-2 rounded-lg border border-gray-300 text-sm focus:border-cyan-600"
+            >
+              <option value="">All Ratings</option>
+              <option value="5">★★★★★ & up</option>
+              <option value="4">★★★★☆ & up</option>
+              <option value="3">★★★☆☆ & up</option>
+              <option value="2">★★☆☆☆ & up</option>
+              <option value="1">★☆☆☆☆ & up</option>
+            </select>
+            {/* sort */}
+            <div className="">
+              <label htmlFor="sort" className="mr-1">
+                Sort by price:
+              </label>
+              <select
+                id="sort"
+                value={sortOrder}
+                onChange={(e) => setSortOrder(e.target.value)}
+                className="border border-cyan-600 rounded p-1"
+              >
+                <option value="">Default</option>
+                <option value="asc">Low to High</option>
+                <option value="desc">High to Low</option>
+              </select>
+            </div>
+            {/* Reset */}
+            <button
+              type="button"
+              onClick={handleReset}
+              className="w-full md:w-1/8 px-4 py-2 rounded-lg border border-cyan-600 text-cyan-700 font-semibold hover:bg-cyan-50 transition"
+            >
+              Reset
             </button>
           </form>
-          <div className="">
-            <label htmlFor="sort" className="mr-2 font-semibold">
-              Sort by price:
-            </label>
-            <select
-              id="sort"
-              value={sortOrder}
-              onChange={(e) => setSortOrder(e.target.value)}
-              className="border border-cyan-800 rounded p-1"
-            >
-              <option value="">Default</option>
-              <option value="asc">Low to High</option>
-              <option value="desc">High to Low</option>
-            </select>
-          </div>
         </div>
-        <h1 className="text-lg mt-4 font-semibold mx-4">
+        {/* <h1 className="text-lg mt-4 font-semibold mx-4">
           <span className="font-bold">In our collection:</span>{" "}
-          {vehicles?.length || "loading...."} vehicles are available
-        </h1>
+          {vehicles?.length} vehicles are available
+        </h1> */}
         <div className="grid grid-cols-1 mt-7 md:mt-12 md:grid-cols-3 lg:grid-cols-4 gap-2  justify-between">
-          {vehicles.map((vehicle) => (
-            <VehicleCard key={vehicle.id} vehicle={vehicle}></VehicleCard>
-          ))}
+          {vehicles.length > 0 ? (
+            vehicles.map((vehicle) => (
+              <VehicleCard key={vehicle.id} vehicle={vehicle}></VehicleCard>
+            ))
+          ) : (
+            <h1 className="text-2xl text-center font-semibold">
+              No Vehicles Are Found
+            </h1>
+          )}
         </div>
       </div>
     </>

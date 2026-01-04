@@ -22,7 +22,7 @@ const MyBookings = () => {
                 setLoading(false)
             })
     }, [axiosInstance, user])
-    if (loading || !user) (
+    if (loading || !user) return (
         <Loading></Loading>
     )
     return (
@@ -45,7 +45,7 @@ const MyBookings = () => {
                     <h1 className='section-title jost my-7 md:my-12'>My Bookings:</h1> 
                     {myVehicles.length === 0 ?
                         <h1 className='jost section-title'>Booked Ride Will Be Shown Below</h1> :
-                        <div className='grid grid-cols-1 md:grid-cols-2  gap-2 md:gap-12 justify-center md:justify-between'>
+                        <div className='grid grid-cols-1  gap-2 md:gap-12 justify-center md:justify-between'>
                             {myVehicles.map(vehicle => <BookingCard key={vehicle._id} vehicle={vehicle}></BookingCard>)}
                         </div>
                     }

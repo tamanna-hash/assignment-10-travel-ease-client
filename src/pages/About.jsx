@@ -6,7 +6,13 @@ import { Link } from "react-router";
 const About = () => {
   return (
     <div>
-      <div className="hero bg-base-200 min-h-screen">
+      <h1 className="section-title my-9 md:my-12">
+        About
+        <span className="md:text-3xl satisfy ml-5 font-bold ">
+          Travel<span className="text-amber-400">Ease</span>{" "}
+        </span>
+      </h1>
+      <div className="hero bg-base-100 min-h-screen">
         <div className="hero-content flex-col lg:flex-row">
           <img
             src={travel2}

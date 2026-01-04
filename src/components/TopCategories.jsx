@@ -4,11 +4,12 @@ import { MdElectricCar } from "react-icons/md";
 import { RiMotorbikeFill } from "react-icons/ri";
 import { motion } from "framer-motion";
 import travel2 from '../assets/travel2.jpg';
+import { Link } from 'react-router';
 
 const TopCategories = () => {
     return (
-        <div className="max-container jost flex flex-col bg-base-300">
-            <div className='mt-9 mb-4 md:my-12'>
+        <div className="max-container jost flex flex-col">
+            <div className='mb-4 my-8 md:mb-12 md:my-12'>
                 <p className='text-center text-cyan-700 satisfy md:text-lg'>Drive Freedom with Every Ride.</p>
                 <h1 className="section-title  animate__animated animate__fadeInUp">
                     Our Top Categories
@@ -28,10 +29,10 @@ const TopCategories = () => {
                     visible: { opacity: 1, y: 0 },
                 }}
             >
-                <div className="flex flex-wrap justify-center md:justify-between items-center gap-4 md:gap-8 max-w-[1000px] mx-auto p-6 md:p-12">
+                <div className="flex flex-wrap justify-center md:justify-between items-center gap-4 md:gap-8 max-w-[1000px] mx-auto px-6 md:px-12 md:pb-12">
 
                     {/* ELECTRIC */}
-                    <div
+                    <Link to={'/allVehicles'}
                         className="relative top-card rounded-lg group bg-cover bg-center"
                         style={{ backgroundImage: `url(${travel2})` }}
                     >
@@ -41,10 +42,10 @@ const TopCategories = () => {
                             <h1 className="top-h1">ELECTRIC</h1>
                             <p className="text-white text-sm md:text-base">Make your ride easier</p>
                         </div>
-                    </div>
+                    </Link>
 
                     {/* SEDAN */}
-                    <div
+                    <Link to={"/allVehicles"}
                         className="relative rounded-lg top-card group bg-cover bg-center"
                         style={{ backgroundImage: `url(${travel2})` }}
                     >
@@ -54,10 +55,10 @@ const TopCategories = () => {
                             <h1 className="top-h1">SEDAN</h1>
                             <p className="text-white text-sm md:text-base">Make your ride easier</p>
                         </div>
-                    </div>
+                    </Link>
 
                     {/* SUV */}
-                    <div
+                    <Link to={"/allVehicles"}
                         className="relative rounded-lg top-card group bg-cover bg-center"
                         style={{ backgroundImage: `url(${travel2})` }}
                     >
@@ -67,10 +68,10 @@ const TopCategories = () => {
                             <h1 className="top-h1">SUV</h1>
                             <p className="text-white text-sm md:text-base">Make your ride easier</p>
                         </div>
-                    </div>
+                    </Link>
 
                     {/* HONDA */}
-                    <div
+                    <Link to={"/allVehicles"}
                         className="relative rounded-lg top-card group bg-cover bg-center"
                         style={{ backgroundImage: `url(${travel2})` }}
                     >
@@ -80,7 +81,7 @@ const TopCategories = () => {
                             <h1 className="top-h1">HONDA</h1>
                             <p className="text-white text-sm md:text-base">Make your ride easier</p>
                         </div>
-                    </div>
+                    </Link>
 
                 </div>
             </motion.div>

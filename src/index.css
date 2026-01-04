@@ -26,14 +26,19 @@
 }
 
 .section-title {
-  @apply text-xl md:text-2xl font-semibold text-center;
+  @apply text-xl md:text-2xl font-semibold text-center text-cyan-900;
 }
 .sub-title {
   @apply text-xl md:text-2xl font-semibold text-center;
 }
-
+.sidebar-dashboard li a.active {
+  @apply bg-cyan-800 text-cyan-50 no-underline;
+}
+.sidebar-dashboard li a:hover {
+  @apply hover:bg-cyan-800 text-white;
+}
 ul a {
-  @apply text-white;
+  @apply text-white -mr-3 font-medium;
 }
 
 ul a:hover {

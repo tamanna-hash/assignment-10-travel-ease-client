@@ -24,7 +24,7 @@ const Banner = () => {
         navigate('/allVehicles')
     }
     return (
-        <div className="relative w-full h-[80vh] overflow-hidden">
+        <div className="relative w-full h-[70vh] overflow-hidden">
             {/* Video Background */}
             <video
                 ref={videoRef}
@@ -40,8 +40,8 @@ const Banner = () => {
 
             {/* Content */}
             <div className="relative jost z-10 animate__animated animate__fadeInUp flex flex-col items-center justify-center h-full text-center text-white px-4">
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">Explore the World, Effortlessly</h1>
-                <p className="text-base md:text-lg lg:text-xl mb-6">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Explore the World, Effortlessly</h1>
+                <p className="text-base md:text-lg mb-4">
                     Book trips, discover destinations, and travel with ease.
                 </p>
                 <button onClick={handleBtn} className="mt-6 px-6 py-3 bg-amber-500 hover:bg-amber-600 rounded-full text-white font-semibold">

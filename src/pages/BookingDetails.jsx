@@ -34,7 +34,7 @@ const VehicleDetails = () => {
     return <Loading></Loading>;
   }
   const handleBack = () => {
-    navigate("/myBookings");
+    navigate(-1);
   };
   return (
     <>
@@ -73,11 +73,18 @@ const VehicleDetails = () => {
                 <span className="font-semibold">Availability:</span>
                 {vehicle.availability}
               </p>
-              <p className="flex items-center">
-                <span className="font-semibold">Rate:</span>
-                {vehicle.rating}
-                <FaStar className="text-amber-400 text-xl" />
-              </p>
+              {/* <p className="flex items-center">
+                <span className="flex">
+                {[...Array(5)].map((_, index) => (
+                  <FaStar
+                    key={index}
+                    className={` ${
+                      index < vehicle?.rating ? "text-amber-400" : "text-gray-300"
+                    }`}
+                  />
+                ))}
+              </span>
+              </p> */}
               <p className=" ">
                 <span className="font-semibold">Description:</span>{" "}
                 {vehicle.description}

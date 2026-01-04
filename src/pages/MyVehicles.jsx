@@ -21,7 +21,7 @@ const MyVehicles = () => {
             })
             .catch(err => console.log(err))
     }, [axiosInstance, user])
-    if (loading || !user) (
+    if (loading || !user) return (
         <Loading></Loading>
     )
     return (
