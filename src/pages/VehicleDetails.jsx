@@ -5,6 +5,7 @@ import { AuthContext } from "../provider/AuthContext";
 import Swal from "sweetalert2";
 import Loading from "./Loading";
 import { FaStar } from "react-icons/fa";
+import VehicleCard from "../components/VehicleCard";
 
 const VehicleDetails = () => {
   const { id } = useParams();
@@ -13,6 +14,7 @@ const VehicleDetails = () => {
   const navigate = useNavigate();
   const axiosInstance = useAxios();
   const [vehicle, setVehicle] = useState({});
+  const [sameCategory, setSameCategory] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axiosInstance
@@ -24,6 +26,17 @@ const VehicleDetails = () => {
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));
   }, [id, axiosInstance]);
+  useEffect(() => {
+    axiosInstance
+      .get(`/all-vehicles?category=${vehicle?.category}`)
+      .then((res) => {
+        setSameCategory(res.data.vehicles);
+        console.log(res);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setLoading(false));
+  }, [axiosInstance, vehicle]);
+  console.log(sameCategory);
   useEffect(() => {
     if (!user?.email || !vehicle?._id) return;
     axiosInstance
@@ -114,8 +127,7 @@ const VehicleDetails = () => {
               </div>
               <div className="text-red-500 font-semibold">
                 {" "}
-                <span className="">Price per day:</span>{" "}
-                {vehicle?.pricePerDay}৳
+                <span className="">Price per day:</span> {vehicle?.pricePerDay}৳
               </div>
               <p className="gap-2 items-center">
                 <span className="font-semibold"></span>
@@ -165,7 +177,22 @@ const VehicleDetails = () => {
             </div>
           </div>
         </div>
+       <div className="md:mt-5">
+         <h1 className="text-xl md:text-2xl md:my-5 font-semibold text-cyan-900">Suggested Items</h1>
+         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {sameCategory.length > 0 ? (
+            sameCategory.map((vehicle) => (
+              <VehicleCard key={vehicle._id} vehicle={vehicle} />
+            ))
+          ) : (
+            <p className="text-center col-span-full text-lg font-semibold">
+              No Vehicles Found
+            </p>
+          )}
+        </div>
+       </div>
       </div>
+
     </>
   );
 };

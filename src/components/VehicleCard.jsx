@@ -39,7 +39,7 @@ const VehicleCard = ({ vehicle }) => {
         </figure>
         <div className="card-body -space-y-2 -m-4 rounded-none">
           <div className="flex gap-2 items-center">
-            <h2 className="card-title md:text-lg">{vehicleName}</h2>
+            <h2 className="font-bold">{vehicleName}</h2>
             <div className="badge badge-outline badge-accent badge-sm">
               {category}
             </div>

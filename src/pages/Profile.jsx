@@ -1,4 +1,4 @@
-import coverImg from "../assets/travel.jpeg";
+import coverImg from "../assets/pbg.jpeg";
 import { use } from "react";
 import { AuthContext } from "../provider/AuthContext";
 
@@ -6,7 +6,7 @@ const Profile = () => {
   const { user } = use(AuthContext);
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="bg-white shadow-lg rounded-2xl md:w-4/5 lg:w-3/5">
+      <div className="bg-white shadow-lg rounded-2xl md:w-4/5">
         <img
           alt="cover photo"
           src={coverImg}
@@ -17,7 +17,7 @@ const Profile = () => {
             <img
               alt="profile"
               src={user?.photoURL}
-              className="mx-auto object-cover rounded-full h-24 w-24  border-2 border-white "
+              className="mx-auto object-cover rounded-full h-32 w-32  border-2 border-white "
             />
           </a>
 
