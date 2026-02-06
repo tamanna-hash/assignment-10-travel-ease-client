@@ -3,7 +3,7 @@ const Contact = () => {
     <div className="min-h-screen bg-base-100 px-6 py-20">
       <div className="max-w-5xl mx-auto">
         <h1 className="text-5xl font-bold mb-6">Contact Us</h1>
-        <p className="text-lg text-gray-500 mb-12">
+        <p className="text-lg text-base-content/60 mb-12">
           We’d love to hear from you. Whether you have a question, feedback, or need support,
           our team is here to help.
         </p>
@@ -11,7 +11,7 @@ const Contact = () => {
         <div className="grid md:grid-cols-2 gap-12">
           <div>
             <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
-            <p className="mb-4 text-gray-600">
+            <p className="mb-4 text-base-content/80">
               Reach out to us anytime and we’ll happily answer your questions.
             </p>
 
@@ -24,7 +24,7 @@ const Contact = () => {
 
           <div className="bg-base-200 p-8 rounded-xl shadow">
             <h3 className="text-xl font-semibold mb-4">Why Contact TravelEase?</h3>
-            <ul className="space-y-3 text-gray-600 list-disc list-inside">
+            <ul className="space-y-3 text-base-content/80 list-disc list-inside">
               <li>Vehicle booking assistance</li>
               <li>Account & dashboard support</li>
               <li>Feedback & feature requests</li>

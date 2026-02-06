@@ -1,5 +1,4 @@
 import React from "react";
-import travel1 from "../assets/travel1.jpg";
 import travel2 from "../assets/travel2.jpg";
 import { IoMdCheckmarkCircle } from "react-icons/io";
 import { Link } from "react-router";
@@ -26,7 +25,7 @@ const About = () => {
               What are our Advantages
             </h1>
 
-            <p className="py-6 text-slate-600 flex items-center gap-2 md:gap-4">
+            <p className="py-6 text-base-content/70 flex items-center gap-2 md:gap-4">
               <IoMdCheckmarkCircle className="text-sky-400 text-2xl" />
               <div>
                 <h1 className="text-xl font-bold">Expert Guidance</h1>
@@ -36,7 +35,7 @@ const About = () => {
                 </p>
               </div>
             </p>
-            <p className="py-6 text-slate-600 flex items-center gap-2 md:gap-4">
+            <p className="py-6 text-base-content/70 flex items-center gap-2 md:gap-4">
               <IoMdCheckmarkCircle className="text-sky-400 text-2xl" />
               <div>
                 <h1 className="text-xl font-bold">Cost-Effectiveness</h1>
@@ -47,7 +46,7 @@ const About = () => {
                 </p>
               </div>
             </p>
-            <p className="py-6 text-slate-600 flex items-center gap-2 md:gap-4">
+            <p className="py-6 text-base-content/70 flex items-center gap-2 md:gap-4">
               <IoMdCheckmarkCircle className="text-sky-400 text-2xl" />
               <div>
                 <h1 className="text-xl font-bold">Safety and Security</h1>

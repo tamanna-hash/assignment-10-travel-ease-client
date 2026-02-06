@@ -345,7 +345,7 @@ const AllVehicles = () => {
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="w-full md:w-1/6 px-3 py-2 rounded-lg border text-sm"
+            className="w-full md:w-1/6 bg-base-100 px-3 py-2 rounded-lg border text-sm"
           >
             <option value="">All Categories</option>
             <option value="Sedan">Sedan</option>
@@ -359,7 +359,7 @@ const AllVehicles = () => {
           <select
             value={selectedRating}
             onChange={(e) => setSelectedRating(e.target.value)}
-            className="w-full md:w-1/6 px-3 py-2 rounded-lg border text-sm"
+            className="w-full md:w-1/6 bg-base-100 px-3 py-2 rounded-lg border text-sm"
           >
             <option value="">All Ratings</option>
             <option value="5">★★★★★ & up</option>
@@ -371,7 +371,7 @@ const AllVehicles = () => {
           <select
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value)}
-            className="px-3 py-2 rounded-lg border text-sm"
+            className="px-3 py-2 bg-base-100 rounded-lg border text-sm"
           >
             <option value="">Default Price</option>
             <option value="asc">Low → High</option>
