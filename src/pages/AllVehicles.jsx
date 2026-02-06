@@ -331,7 +331,7 @@ const AllVehicles = () => {
           className="flex flex-wrap gap-3 items-center justify-center mb-8"
         >
           {/* Search */}
-          <div className="flex items-center w-full md:w-1/4 px-3 py-2 rounded-lg border bg-white">
+          <div className="flex items-center w-full md:w-1/4 px-3 py-2 rounded-lg border bg-base">
             <input
               type="search"
               value={searchText}

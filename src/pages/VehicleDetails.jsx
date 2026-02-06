@@ -186,7 +186,7 @@ const VehicleDetails = () => {
             ))
           ) : (
             <p className="text-center col-span-full text-lg font-semibold">
-              No Vehicles Found
+              No Vehicles Found At That Moment
             </p>
           )}
         </div>
